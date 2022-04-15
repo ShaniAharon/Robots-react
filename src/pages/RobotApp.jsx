@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import {RobotList} from '../cmps/RobotList';
 import {RobotsDetails} from './RobotsDetails';
+import {RobotFilter} from '../cmps/RobotFilter';
 import {robotService} from '../services/robotService';
 
 export class RobotApp extends Component {
@@ -14,7 +15,7 @@ export class RobotApp extends Component {
   }
 
   async loadRobots() {
-    const robots = await robotService.query();
+    const robots = await robotService.query(this.state.filterBy);
     this.setState({robots});
   }
 
@@ -25,6 +26,11 @@ export class RobotApp extends Component {
   onRemoveRobot = async (robotId) => {
     await robotService.remove(robotId);
     this.loadRobots();
+  };
+
+  onChangeFilter = (filterBy) => {
+    console.log('filterBy', filterBy);
+    this.setState({filterBy}, this.loadRobots);
   };
 
   render() {
@@ -38,11 +44,14 @@ export class RobotApp extends Component {
             goBack={() => this.onSelectRobot(null)}
           />
         ) : (
-          <RobotList
-            onRemoveRobot={this.onRemoveRobot}
-            onSelectRobot={this.onSelectRobot}
-            robots={robots}
-          />
+          <>
+            <RobotFilter onChangeFilter={this.onChangeFilter} />
+            <RobotList
+              onRemoveRobot={this.onRemoveRobot}
+              onSelectRobot={this.onSelectRobot}
+              robots={robots}
+            />
+          </>
         )}
       </section>
     );
