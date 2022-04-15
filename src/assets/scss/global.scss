@@ -1,0 +1,34 @@
+// Externals
+
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+
+// Basics
+@import "basics/typography";
+@import "basics/base";
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/modals";
+@import "basics/animations";
+
+// Pages
+@import "cmps/robot-details";
+
+
+// Components
+@import "cmps/robot-list";
+@import "cmps/robot-preview";
+@import "cmps/robot-filter";
+
+
+.app-header {
+    background-color: #e91e63e3;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+
+
+
