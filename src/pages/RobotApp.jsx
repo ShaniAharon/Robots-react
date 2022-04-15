@@ -1,10 +1,12 @@
 import {Component} from 'react';
 import {RobotList} from '../cmps/RobotList';
+import {RobotsDetails} from './RobotsDetails';
 import {robotService} from '../services/robotService';
 
 export class RobotApp extends Component {
   state = {
     robots: null,
+    selectedRobotId: null,
   };
 
   componentDidMount() {
@@ -16,12 +18,20 @@ export class RobotApp extends Component {
     this.setState({robots});
   }
 
+  onSelectRobot = (robotId) => {
+    this.setState({selectedRobotId: robotId});
+  };
+
   render() {
-    const {robots} = this.state;
+    const {robots, selectedRobotId} = this.state;
     if (!robots) return <div>Loading...</div>; // prevent error when robots is null at the start
     return (
       <section className="robot-app">
-        <RobotList robots={robots} />
+        {selectedRobotId ? (
+          <RobotsDetails robotId={selectedRobotId} />
+        ) : (
+          <RobotList onSelectRobot={this.onSelectRobot} robots={robots} />
+        )}
       </section>
     );
   }
