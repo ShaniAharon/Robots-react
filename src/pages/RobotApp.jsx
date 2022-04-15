@@ -22,6 +22,11 @@ export class RobotApp extends Component {
     this.setState({selectedRobotId: robotId});
   };
 
+  onRemoveRobot = async (robotId) => {
+    await robotService.remove(robotId);
+    this.loadRobots();
+  };
+
   render() {
     const {robots, selectedRobotId} = this.state;
     if (!robots) return <div>Loading...</div>; // prevent error when robots is null at the start
@@ -33,7 +38,11 @@ export class RobotApp extends Component {
             goBack={() => this.onSelectRobot(null)}
           />
         ) : (
-          <RobotList onSelectRobot={this.onSelectRobot} robots={robots} />
+          <RobotList
+            onRemoveRobot={this.onRemoveRobot}
+            onSelectRobot={this.onSelectRobot}
+            robots={robots}
+          />
         )}
       </section>
     );
