@@ -1,5 +1,6 @@
 import './assets/scss/global.scss';
-import {Home} from './pages/Home';
+// import {Home} from './pages/Home';
+import {RobotApp} from './pages/RobotApp';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       </header>
       <main className="container">
         <h1>
-          <Home />
+          <RobotApp />
         </h1>
       </main>
     </div>
