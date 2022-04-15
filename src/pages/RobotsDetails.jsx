@@ -26,6 +26,9 @@ export class RobotsDetails extends Component {
           <h3>battery status: {robot.batteryStatus}</h3>
         </section>
         <img src={`https://robohash.org/${robot._id}`} alt="" />
+        <section>
+          <button onClick={this.props.goBack}>go Back</button>
+        </section>
       </section>
     );
   }

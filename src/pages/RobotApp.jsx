@@ -28,7 +28,10 @@ export class RobotApp extends Component {
     return (
       <section className="robot-app">
         {selectedRobotId ? (
-          <RobotsDetails robotId={selectedRobotId} />
+          <RobotsDetails
+            robotId={selectedRobotId}
+            goBack={() => this.onSelectRobot(null)}
+          />
         ) : (
           <RobotList onSelectRobot={this.onSelectRobot} robots={robots} />
         )}
