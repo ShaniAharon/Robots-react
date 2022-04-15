@@ -17,7 +17,7 @@ export class RobotsDetails extends Component {
     return (
       <section className="robot-details">
         <section>
-          <h3>Model: {robot.modal}</h3>
+          <h3>Model: {robot.model}</h3>
         </section>
         <section>
           <h3>Type: {robot.type}</h3>
