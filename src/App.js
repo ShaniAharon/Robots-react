@@ -1,19 +1,21 @@
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import './assets/scss/global.scss';
 // import {Home} from './pages/Home';
+import {AppHeader} from './cmps/AppHeader';
 import {RobotApp} from './pages/RobotApp';
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <section className="container">Robot Shop</section>
-      </header>
-      <main className="container">
-        <h1>
-          <RobotApp />
-        </h1>
-      </main>
-    </div>
+    <Router>
+      <div className="app">
+        <AppHeader />
+        <main className="container">
+          <Switch>
+            <Route component={RobotApp} path="/" />
+          </Switch>
+        </main>
+      </div>
+    </Router>
   );
 }
 
