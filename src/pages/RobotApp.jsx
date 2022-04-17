@@ -2,6 +2,7 @@ import {Component} from 'react';
 import {RobotList} from '../cmps/RobotList';
 import {RobotFilter} from '../cmps/RobotFilter';
 import {robotService} from '../services/robotService';
+import {Link} from 'react-router-dom';
 
 export class RobotApp extends Component {
   state = {
@@ -33,6 +34,7 @@ export class RobotApp extends Component {
     return (
       <section className="robot-app">
         <RobotFilter onChangeFilter={this.onChangeFilter} />
+        <Link to="/robot/edit">Add Robot</Link>
         <RobotList
           history={this.props.history}
           onRemoveRobot={this.onRemoveRobot}
