@@ -8,8 +8,7 @@ export class RobotsDetails extends Component {
   };
 
   async componentDidMount() {
-    const robot = await robotService.getById(this.props.robotId);
-    this.setState({robot});
+    this.loadRobot();
   }
 
   async loadRobot() {

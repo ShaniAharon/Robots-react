@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 
-export function RobotPreview({robot, onSelectRobot, onRemoveRobot}) {
+export function RobotPreview({robot, onRemoveRobot}) {
   const robotStyle = {
     backgroundImage: `url(https://robohash.org/${robot._id})`,
   };
@@ -13,6 +13,7 @@ export function RobotPreview({robot, onSelectRobot, onRemoveRobot}) {
       </Link>
       <section className="actions">
         <button onClick={() => onRemoveRobot(robot._id)}>Delete</button>
+        <Link to={`/robot/edit/${robot._id}`}>Edit Robot</Link>
       </section>
     </section>
   );

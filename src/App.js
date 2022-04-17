@@ -1,8 +1,8 @@
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import './assets/scss/global.scss';
-// import {Home} from './pages/Home';
 import {AppHeader} from './cmps/AppHeader';
 import {RobotApp} from './pages/RobotApp';
+import {RobotEdit} from './pages/RobotEdit';
 import {RobotsDetails} from './pages/RobotsDetails';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <AppHeader />
         <main className="container">
           <Switch>
+            <Route path="/robot/edit/:id?" component={RobotEdit} />
             <Route path="/robot/:id" component={RobotsDetails} />
             <Route path="/" component={RobotApp} />
           </Switch>
