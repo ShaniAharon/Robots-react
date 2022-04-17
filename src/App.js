@@ -3,6 +3,7 @@ import './assets/scss/global.scss';
 // import {Home} from './pages/Home';
 import {AppHeader} from './cmps/AppHeader';
 import {RobotApp} from './pages/RobotApp';
+import {RobotsDetails} from './pages/RobotsDetails';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <AppHeader />
         <main className="container">
           <Switch>
-            <Route component={RobotApp} path="/" />
+            <Route path="/robot/:id" component={RobotsDetails} />
+            <Route path="/" component={RobotApp} />
           </Switch>
         </main>
       </div>

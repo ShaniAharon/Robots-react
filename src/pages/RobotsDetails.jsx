@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {robotService} from '../services/robotService';
 
 export class RobotsDetails extends Component {
@@ -10,6 +11,16 @@ export class RobotsDetails extends Component {
     const robot = await robotService.getById(this.props.robotId);
     this.setState({robot});
   }
+
+  async loadRobot() {
+    const robot = await robotService.getById(this.props.match.params.id);
+    this.setState({robot});
+  }
+
+  onBack = () => {
+    this.props.history.push('/');
+    // this.props.history.goBack()
+  };
 
   render() {
     const {robot} = this.state;
@@ -27,7 +38,8 @@ export class RobotsDetails extends Component {
         </section>
         <img src={`https://robohash.org/${robot._id}`} alt="" />
         <section>
-          <button onClick={this.props.goBack}>go Back</button>
+          <button onClick={this.onBack}>Back</button>
+          <Link to="/robot/r2">Next Robot</Link>
         </section>
       </section>
     );
