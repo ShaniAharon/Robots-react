@@ -3,6 +3,7 @@ import {RobotList} from '../cmps/RobotList';
 import {RobotFilter} from '../cmps/RobotFilter';
 import {robotService} from '../services/robotService';
 import {Link} from 'react-router-dom';
+import {NiceButton} from '../cmps/NiceButton';
 
 export class RobotApp extends Component {
   state = {
@@ -31,6 +32,7 @@ export class RobotApp extends Component {
   render() {
     const {robots} = this.state;
     if (!robots) return <div>Loading...</div>; // prevent error when robots is null at the start
+    const Icon = () => '🎈';
     return (
       <section className="robot-app">
         <RobotFilter onChangeFilter={this.onChangeFilter} />
@@ -40,6 +42,13 @@ export class RobotApp extends Component {
           onRemoveRobot={this.onRemoveRobot}
           robots={robots}
         />
+        <NiceButton
+          onClick={() => console.log('Nice btn clicked')}
+          className="nice-button"
+          Icon={Icon}
+        >
+          Nice button
+        </NiceButton>
       </section>
     );
   }
