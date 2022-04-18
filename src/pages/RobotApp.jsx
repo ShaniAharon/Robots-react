@@ -1,36 +1,42 @@
 import {Component} from 'react';
 import {RobotList} from '../cmps/RobotList';
 import {RobotFilter} from '../cmps/RobotFilter';
-import {robotService} from '../services/robotService';
 import {Link} from 'react-router-dom';
 import {NiceButton} from '../cmps/NiceButton';
+import {connect} from 'react-redux';
+import {
+  loadRobots,
+  removeRobot,
+  setFilterBy,
+} from '../store/actions/robotActions';
 
-export class RobotApp extends Component {
-  state = {
-    robots: null,
-    selectedRobotId: null,
-  };
+class _RobotApp extends Component {
+  // state = {
+  //   robots: null,
+  //   selectedRobotId: null,
+  // };
 
   componentDidMount() {
-    this.loadRobots();
+    this.props.loadRobots();
   }
 
-  async loadRobots() {
-    const robots = await robotService.query(this.state.filterBy);
-    this.setState({robots});
-  }
+  // async loadRobots() {
+  //   const robots = await robotService.query(this.state.filterBy);
+  //   this.setState({robots});
+  // }
 
   onRemoveRobot = async (robotId) => {
-    await robotService.remove(robotId);
-    this.loadRobots();
+    this.props.removeRobot(robotId);
   };
 
-  onChangeFilter = (filterBy) => {
-    this.setState({filterBy}, this.loadRobots);
+  onChangeFilter = async (filterBy) => {
+    // this.setState({filterBy}, this.loadRobots);
+    await this.props.setFilterBy(filterBy);
+    this.props.loadRobots();
   };
 
   render() {
-    const {robots} = this.state;
+    const {robots} = this.props;
     if (!robots) return <div>Loading...</div>; // prevent error when robots is null at the start
     const Icon = () => '🎈';
     return (
@@ -53,3 +59,17 @@ export class RobotApp extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    robots: state.robotModule.robots,
+  };
+};
+
+const mapDispatchToProps = {
+  loadRobots,
+  removeRobot,
+  setFilterBy,
+};
+
+export const RobotApp = connect(mapStateToProps, mapDispatchToProps)(_RobotApp);
