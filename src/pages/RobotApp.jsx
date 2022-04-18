@@ -9,6 +9,7 @@ import {
   removeRobot,
   setFilterBy,
 } from '../store/actions/robotActions';
+import {spendBalance} from '../store/actions/userActions';
 
 class _RobotApp extends Component {
   // state = {
@@ -35,6 +36,11 @@ class _RobotApp extends Component {
     this.props.loadRobots();
   };
 
+  onSpendBalance = () => {
+    console.log('spend');
+    this.props.spendBalance(5);
+  };
+
   render() {
     const {robots} = this.props;
     if (!robots) return <div>Loading...</div>; // prevent error when robots is null at the start
@@ -55,6 +61,13 @@ class _RobotApp extends Component {
         >
           Nice button
         </NiceButton>
+        <NiceButton
+          onClick={this.onSpendBalance}
+          className="nice-button"
+          Icon={() => '💰'}
+        >
+          Spend Balance
+        </NiceButton>
       </section>
     );
   }
@@ -70,6 +83,7 @@ const mapDispatchToProps = {
   loadRobots,
   removeRobot,
   setFilterBy,
+  spendBalance,
 };
 
 export const RobotApp = connect(mapStateToProps, mapDispatchToProps)(_RobotApp);
