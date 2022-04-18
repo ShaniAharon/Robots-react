@@ -11,6 +11,12 @@ export class RobotsDetails extends Component {
     this.loadRobot();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.loadRobot();
+    }
+  }
+
   async loadRobot() {
     const robot = await robotService.getById(this.props.match.params.id);
     this.setState({robot});

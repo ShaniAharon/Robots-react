@@ -20,9 +20,15 @@
 @import 'cmps/robot-list';
 @import 'cmps/robot-preview';
 @import 'cmps/robot-filter';
+@import 'cmps/nice-button';
 @import 'cmps/app-header';
 
 a.active,
 a.my-active {
   color: #0f0080;
+}
+
+.btn-section {
+  text-align: center;
+  margin-top: 30px;
 }

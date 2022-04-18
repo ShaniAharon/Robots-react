@@ -54,20 +54,22 @@ class _RobotApp extends Component {
           onRemoveRobot={this.onRemoveRobot}
           robots={robots}
         />
-        <NiceButton
-          onClick={() => console.log('Nice btn clicked')}
-          className="nice-button"
-          Icon={Icon}
-        >
-          Nice button
-        </NiceButton>
-        <NiceButton
-          onClick={this.onSpendBalance}
-          className="nice-button"
-          Icon={() => '💰'}
-        >
-          Spend Balance
-        </NiceButton>
+        <section className="btn-section">
+          <NiceButton
+            onClick={() => console.log('Nice btn clicked')}
+            className="nice-button"
+            Icon={Icon}
+          >
+            Nice button
+          </NiceButton>
+          <NiceButton
+            onClick={this.onSpendBalance}
+            className="nice-button"
+            Icon={() => '💰'}
+          >
+            Spend Balance
+          </NiceButton>
+        </section>
       </section>
     );
   }
