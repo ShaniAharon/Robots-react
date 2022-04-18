@@ -1,14 +1,18 @@
-import {NavLink, withRouter} from 'react-router-dom';
-
-import React from 'react';
+import {withRouter} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 function _AppHeader(props) {
+  const onBack = () => {
+    console.log('props:', props);
+    props.history.goBack();
+  };
+
   return (
     <header className="app-header">
       <section className="container">
-        <h1 className="logo">Robot Shop</h1>
-        <section className="back-container">
-          <button onClick={props.history.goBack}>Back</button>
+        <h3 className="logo">Robot Shop</h3>
+        <section className="back">
+          <button onClick={onBack}>Back</button>
         </section>
         <nav>
           <NavLink activeClassName="my-active" exact to="/">

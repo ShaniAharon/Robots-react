@@ -1,4 +1,3 @@
-import React from 'react';
 import {Route} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 
@@ -34,8 +33,8 @@ export function About() {
         </p>
       </section>
       <nav>
-        <NavLink path="/about/team">Team</NavLink>
-        <NavLink path="/about/team">Vision</NavLink>
+        <NavLink to="/about/team">Team</NavLink>
+        <NavLink to="/about/vision">Vision</NavLink>
       </nav>
 
       <section>
