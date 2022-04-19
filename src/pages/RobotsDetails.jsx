@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {useParams} from 'react-router-dom/cjs/react-router-dom.min';
+import {useParams} from 'react-router-dom';
 import {robotService} from '../services/robotService';
 
 export const RobotsDetails = (props) => {
@@ -26,7 +26,7 @@ export const RobotsDetails = (props) => {
   // }
 
   const loadRobot = async () => {
-    const robot = await robotService.getById(this.props.match.params.id);
+    const robot = await robotService.getById(props.match.params.id);
     // this.setState({robot});
     setRobot(robot);
   };
