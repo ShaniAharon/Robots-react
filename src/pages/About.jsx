@@ -7,7 +7,7 @@ export function About() {
       <ul>
         <li>team1</li>
         <li>team2</li>
-        <li>team3</li>
+        <li>team test</li>
       </ul>
     );
   };
